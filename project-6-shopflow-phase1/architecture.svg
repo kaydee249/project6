@@ -1,0 +1,88 @@
+<svg viewBox="0 0 1100 650" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#475569"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="650" fill="#ffffff"/>
+  <text x="550" y="34" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f3d5c">ShopFlow Phase 1: the working system on AWS</text>
+  <text x="550" y="54" text-anchor="middle" font-size="11" fill="#64748b">REST = synchronous call   ·   SQS = asynchronous event</text>
+
+  <!-- delivery (by hand in Phase 1) -->
+  <rect x="20" y="90" width="200" height="250" rx="10" fill="#effaf7" stroke="#0f766e" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="120" y="110" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f766e">BUILD (by hand)</text>
+  <rect x="45" y="124" width="150" height="44" rx="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+  <text x="120" y="150" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1e3a8a">Developer</text>
+  <rect x="45" y="232" width="150" height="48" rx="8" fill="#fff1e6" stroke="#ec7211" stroke-width="2"/>
+  <text x="120" y="252" text-anchor="middle" font-size="12" font-weight="bold" fill="#b4530f">Amazon ECR</text>
+  <text x="120" y="268" text-anchor="middle" font-size="9" fill="#475569">container images</text>
+  <line x1="120" y1="168" x2="120" y2="232" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="127" y="203" font-size="9" fill="#475569">docker build &amp; push</text>
+  <text x="120" y="312" text-anchor="middle" font-size="9.5" fill="#475569">Terraform provisions</text>
+  <text x="120" y="326" text-anchor="middle" font-size="9.5" fill="#475569">all AWS resources</text>
+
+  <!-- AWS -->
+  <rect x="250" y="70" width="830" height="500" rx="10" fill="#fff8f2" stroke="#ec7211" stroke-width="1.5" stroke-dasharray="7 5"/>
+  <text x="268" y="90" font-size="13" font-weight="bold" fill="#b4530f">AWS CLOUD</text>
+
+  <rect x="560" y="98" width="170" height="40" rx="8" fill="#e9f7ef" stroke="#16a34a" stroke-width="2"/>
+  <text x="645" y="123" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#15803d">Users / browser</text>
+  <rect x="540" y="152" width="210" height="44" rx="8" fill="#e7f0fb" stroke="#146eb4" stroke-width="2"/>
+  <text x="645" y="172" text-anchor="middle" font-size="12" font-weight="bold" fill="#0f4f86">ALB Ingress</text>
+  <text x="645" y="188" text-anchor="middle" font-size="9" fill="#475569">single entry point (HTTP)</text>
+  <line x1="645" y1="138" x2="645" y2="152" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="645" y1="196" x2="645" y2="282" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="652" y="245" font-size="10" fill="#475569">HTTP</text>
+
+  <!-- VPC -->
+  <rect x="270" y="252" width="560" height="290" rx="10" fill="#f6f9fb" stroke="#64748b" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="520" y="272" font-size="11.5" font-weight="bold" fill="#334155">VPC · private subnets across 2 AZs</text>
+
+  <!-- EKS -->
+  <rect x="285" y="282" width="545" height="172" rx="10" fill="#eef3fd" stroke="#326ce5" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="308" y="301" font-size="11.5" font-weight="bold" fill="#2453b3">EKS cluster</text>
+
+  <rect x="298" y="312" width="118" height="46" rx="6" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="357" y="333" text-anchor="middle" font-size="11" font-weight="bold" fill="#2453b3">Storefront</text>
+  <text x="357" y="348" text-anchor="middle" font-size="8.5" fill="#475569">React</text>
+  <rect x="430" y="312" width="118" height="46" rx="6" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="489" y="333" text-anchor="middle" font-size="11" font-weight="bold" fill="#2453b3">Orders</text>
+  <text x="489" y="348" text-anchor="middle" font-size="8.5" fill="#475569">Spring Boot</text>
+  <rect x="562" y="312" width="118" height="46" rx="6" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="621" y="333" text-anchor="middle" font-size="11" font-weight="bold" fill="#2453b3">Catalog</text>
+  <text x="621" y="348" text-anchor="middle" font-size="8.5" fill="#475569">Spring Boot</text>
+  <rect x="694" y="312" width="124" height="46" rx="6" fill="#ffffff" stroke="#326ce5" stroke-width="2"/>
+  <text x="756" y="333" text-anchor="middle" font-size="11" font-weight="bold" fill="#2453b3">Notifications</text>
+  <text x="756" y="348" text-anchor="middle" font-size="8.5" fill="#475569">Spring Boot</text>
+
+  <line x1="416" y1="335" x2="430" y2="335" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="548" y1="335" x2="562" y2="335" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="423" y="307" text-anchor="middle" font-size="8" fill="#475569">REST</text>
+  <text x="555" y="307" text-anchor="middle" font-size="8" fill="#475569">REST</text>
+
+  <!-- RDS -->
+  <rect x="300" y="478" width="240" height="46" rx="8" fill="#e6f0f5" stroke="#2a6f97" stroke-width="2"/>
+  <text x="420" y="499" text-anchor="middle" font-size="12" font-weight="bold" fill="#1e5275">Amazon RDS (PostgreSQL)</text>
+  <text x="420" y="515" text-anchor="middle" font-size="8.5" fill="#475569">products and orders</text>
+  <line x1="489" y1="358" x2="440" y2="478" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <line x1="621" y1="358" x2="470" y2="478" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="455" y="430" font-size="9" fill="#475569">JDBC</text>
+
+  <!-- SQS -->
+  <rect x="880" y="312" width="120" height="46" rx="8" fill="#f3eefe" stroke="#8c4fff" stroke-width="2"/>
+  <text x="940" y="333" text-anchor="middle" font-size="12" font-weight="bold" fill="#6b2fd6">Amazon SQS</text>
+  <text x="940" y="348" text-anchor="middle" font-size="8.5" fill="#475569">order events</text>
+  <polyline points="489,312 489,296 940,296 940,312" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="715" y="290" text-anchor="middle" font-size="9" fill="#475569">publish event (async)</text>
+  <line x1="938" y1="358" x2="800" y2="358" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="852" y="374" font-size="9" fill="#475569">consume</text>
+
+  <!-- ECR pull -->
+  <line x1="195" y1="256" x2="296" y2="320" stroke="#475569" stroke-width="2" marker-end="url(#a)"/>
+  <text x="205" y="300" font-size="9" fill="#475569">pull image</text>
+
+  <!-- Phase 2 note -->
+  <rect x="250" y="582" width="830" height="50" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="265" y="603" font-size="11" font-weight="bold" fill="#334155">Phase 2 adds:</text>
+  <text x="265" y="621" font-size="10" fill="#475569">CI/CD pipeline + Nexus   ·   Cognito login   ·   HTTPS / TLS   ·   Secrets Manager (IRSA)   ·   Prometheus + Grafana   ·   autoscaling   ·   Helm</text>
+</svg>
