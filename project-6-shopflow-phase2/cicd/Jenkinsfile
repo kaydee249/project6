@@ -1,9 +1,5 @@
-// Phase 2 delivery pipeline, one per service. It reuses the gated pipeline
-// from Project 5 and adds: publish the jar to Nexus (the artifact store), and
-// deploy with Helm instead of by hand.
-//
-// Create one Jenkins job per service and set SERVICE to catalog, orders, or
-// notifications. The storefront has its own simpler build (npm + docker).
+// Phase 2 delivery pipeline, one per service.
+// Set SERVICE to catalog, orders, or notifications.
 
 pipeline {
     agent any
@@ -14,11 +10,12 @@ pipeline {
 
     environment {
         AWS_REGION   = 'us-east-1'
-        ECR_ACCOUNT  = '123456789012'
+        ECR_ACCOUNT  = '325879634650'
         EKS_CLUSTER  = 'shopflow'
         NEXUS_URL    = 'http://nexus:8081/repository/maven-releases/'
 
-        SERVICE_DIR  = "services/${params.SERVICE}-service"
+        SERVICE_DIR  = "project-6-shopflow-phase1/services/${params.SERVICE}-service"
+        HELM_DIR     = "project-6-shopflow-phase2/helm/shopflow"
         IMAGE_REPO   = "shopflow-${params.SERVICE}"
         IMAGE_TAG    = "${BUILD_NUMBER}"
         ECR_REGISTRY = "${ECR_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com"
@@ -99,7 +96,7 @@ pipeline {
                     export AWS_ACCESS_KEY_ID=$AWS_CREDS_USR
                     export AWS_SECRET_ACCESS_KEY=$AWS_CREDS_PSW
                     aws eks update-kubeconfig --region ${AWS_REGION} --name ${EKS_CLUSTER}
-                    helm upgrade --install shopflow helm/shopflow \
+                    helm upgrade --install shopflow ''' + "${HELM_DIR}" + ''' \
                       --reuse-values \
                       --set image.tag=${IMAGE_TAG}
                     kubectl rollout status deployment/${SERVICE}-service --timeout=180s
